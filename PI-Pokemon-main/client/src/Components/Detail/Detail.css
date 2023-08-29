@@ -1,0 +1,40 @@
+.fondo {
+  background-image: url("../../assets/fondopoke.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+}
+.detail {
+  border-radius: 5rem;
+  border: 15px solid blue;
+  margin-top: 12rem;
+  margin-left: 30rem;
+  margin-right: 30rem;
+  display: flex;
+  background-color: yellow;
+  justify-content: center;
+  color: blue;
+}
+.name {
+  display: flex;
+  justify-content: center;
+}
+
+.stats {
+  grid-template-columns: repeat(3, 33.3%);
+  justify-content: center;
+  opacity: 1;
+}
+.button {
+  margin-top: 2rem;
+  background-color: yellow;
+  border: 2px solid rgb(52, 101, 175);
+  border-radius: 1rem;
+  color: blue;
+  height: 3rem;
+  width: 7rem;
+  cursor: pointer;
+  font-size: medium;
+}

@@ -1,0 +1,8 @@
+body {
+  background-image: url("../../assets/fondopoke.png");
+  background-color: rgb(17, 111, 151);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100%;
+}
