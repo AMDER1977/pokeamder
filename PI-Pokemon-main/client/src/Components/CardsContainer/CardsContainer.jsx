@@ -52,7 +52,7 @@ function CardsContainer() {
           <div className="container">
             {paginatedCards.map((pokemon) => {
               return (
-                <div className="pokemonsCards">
+                <div className="pokemonsCards" key={pokemon.id}>
                   <Link to={`/detail/${pokemon.id}`} className="link">
                     <Cards
                       className="card"
@@ -105,3 +105,19 @@ function CardsContainer() {
 }
 
 export default CardsContainer;
+/*jsx
+{paginatedCards.map((pokemon) => {
+  return (
+    <div className="pokemonsCards" key={pokemon.id}>
+      <Link to={`/detail/${pokemon.id}`} className="link">
+        <Cards
+          className="card"
+          name={pokemon.name}
+          id={pokemon.id}
+          image={pokemon.image}
+          types={pokemon.types}
+        />
+      </Link>
+    </div>
+  );
+})}*/

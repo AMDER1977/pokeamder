@@ -43,14 +43,14 @@ function Filter({ setCurrentPage }) {
         Clear Filters
       </button>
       <select onChange={handleAttack} className="filterButton">
-        <option disabled selected>
+        <option disabled defaultValue="">
           Order Pokemons
         </option>
         <option value="asc">Ascendente</option>
         <option value="des">Descendente</option>
       </select>
       <select onChange={handleName} className="filterButton">
-        <option disabled selected>
+        <option disabled defaultValue="">
           Order by Name
         </option>
         <option value="asc">A-Z</option>

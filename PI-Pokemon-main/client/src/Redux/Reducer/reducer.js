@@ -52,7 +52,7 @@ const rootReducer = (state = initialState, action) => {
             return true;
           } else return false;
         } else {
-          const acum = el.pokeTypes?.filter((t) => t.name === action.payload);
+          let acum = el.pokeTypes?.filter((t) => t.name === action.payload);
           if (acum.length > 0) {
             return true;
           } else {
