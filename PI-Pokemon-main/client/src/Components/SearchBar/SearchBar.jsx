@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getByName } from "../../Redux/Actions/index";
 import "./SearchBar.css";
 
@@ -7,6 +7,7 @@ function SearchBar({ setCurrentPage }) {
   const dispatch = useDispatch();
 
   const [input, setInput] = useState("");
+  const pokemons = useSelector((state) => state.pokemons);
 
   let handlerChange = (event) => {
     setInput(event.target.value);
