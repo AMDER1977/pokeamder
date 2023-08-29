@@ -55,18 +55,13 @@ const CreatePokemon = () => {
     } else {
       setInput({
         ...input,
-        types: input.types.filter(
-          (c) => input.types.indexOf(c) !== input.types.indexOf(e.target.value)
-        ),
+        types: input.types.filter((c) => c !== e.target.value),
       });
       setError(
         validate(
           {
             ...input,
-            types: input.types.filter(
-              (c) =>
-                input.types.indexOf(c) !== input.types.indexOf(e.target.value)
-            ),
+            types: input.types.filter((c) => c !== e.target.value),
           },
           pokemon
         )
@@ -75,22 +70,7 @@ const CreatePokemon = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault(e);
-    console.log({
-      name: input.name,
-      hp: Number(input.hp),
-      attack: Number(input.attack),
-      defense: Number(input.defense),
-      speed: Number(input.speed),
-      height: Number(input.height),
-      weight: Number(input.weight),
-      image: input.image,
-      types: input.types.map((type) => {
-        for (let i = 0; i < types.length; i++) {
-          if (types[i].name === type) return types[i].id;
-        }
-      }),
-    });
+    e.preventDefault();
     dispatch(
       createPokemon({
         name: input.name,
@@ -102,9 +82,8 @@ const CreatePokemon = () => {
         weight: Number(input.weight),
         image: input.image,
         types: input.types.map((type) => {
-          for (let i = 0; i < types.length; i++) {
-            if (types[i].name === type) return types[i].id;
-          }
+          const foundType = types.find((t) => t.name === type);
+          return foundType.id;
         }),
       })
     );
@@ -128,7 +107,7 @@ const CreatePokemon = () => {
     dispatch(getTypes());
   }, [dispatch]);
 
-  console.log(input.types);
+  //console.log(input.types);
   return (
     <div className="containerForm">
       <Link to={"/home"}>

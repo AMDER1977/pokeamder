@@ -29,7 +29,12 @@ const Detail = (props) => {
         <div className="detail">
           <div>
             <h1>Name: {pokemon[0].name.toUpperCase()}</h1>
-            <img src={pokemon[0].image} width={"250px"} height={"250px"} />
+            <img
+              src={pokemon[0].image}
+              alt=""
+              width={"250px"}
+              height={"250px"}
+            />
             <h2>{pokemon[0].types.join(" - ").toUpperCase()}</h2>
           </div>
           <div className="stats">

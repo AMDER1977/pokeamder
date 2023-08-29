@@ -37,36 +37,38 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         pokemons: action.payload,
       };
-    
-    case "FILTER_BY_TYPE":
-      if(action.payload === "all") {return {...state, pokemons:state.allPokemons}}
-          
-      const typeSelected = state.allPokemons?.filter((el) => {
-          if(!el.createdInDb){
-              if(el.types[0] === action.payload || el.types[1] == action.payload){
 
-               return true 
-              }
-              else return false 
-          } 
-          else {
-              const acum = el.pokeTypes?.filter((t) => t.name === action.payload)
-                  if(acum.length >0){
-                  return true 
-                  }
-                  else {
-                  return false 
-                  }
-              }       
-          })
-      
-      const results = typeSelected.filter((pk) => state.allPokemons.includes(pk))
-      
-      return {
-            ...state,
-            pokemons: results,
-            
+    case "FILTER_BY_TYPE":
+      if (action.payload === "all") {
+        return { ...state, pokemons: state.allPokemons };
       }
+
+      const typeSelected = state.allPokemons?.filter((el) => {
+        if (!el.createdInDb) {
+          if (
+            el.types[0] === action.payload ||
+            el.types[1] === action.payload
+          ) {
+            return true;
+          } else return false;
+        } else {
+          const acum = el.pokeTypes?.filter((t) => t.name === action.payload);
+          if (acum.length > 0) {
+            return true;
+          } else {
+            return false;
+          }
+        }
+      });
+
+      const results = typeSelected.filter((pk) =>
+        state.allPokemons.includes(pk)
+      );
+
+      return {
+        ...state,
+        pokemons: results,
+      };
 
     case "ORDER_BY_NAME":
       if (action.payload === "asc") {
@@ -110,7 +112,7 @@ const rootReducer = (state = initialState, action) => {
           pokemons: ords,
         };
       }
-
+      break;
     case "ORDER_BY_ATTACK":
       if (action.payload === "asc") {
         let poke = state.pokemons?.slice();
@@ -153,32 +155,35 @@ const rootReducer = (state = initialState, action) => {
           pokemons: ords,
         };
       }
+      break;
     case "FILTER_BY_CREATE":
-      
-      if (action.payload === "all")  
-      return {
-        ...state ,
-         pokemons:state.allPokemons
+      if (action.payload === "all") {
+        return {
+          ...state,
+          pokemons: state.allPokemons,
         };
-
+      }
 
       if (action.payload === "created") {
-        const createdPokes = state.allPokemons?.filter((poke) => typeof poke.id === "string");
+        const createdPokes = state.allPokemons?.filter(
+          (poke) => typeof poke.id === "string"
+        );
         // console.log(createdPokes);
         return {
           ...state,
           pokemons: createdPokes,
-         
         };
       }
       if (action.payload === "api") {
-        const apiPokes = state.allPokemons?.filter((poke) => typeof poke.id === "number");
-        return{
-            ...state,
-            pokemons:apiPokes,
-       
-        }
-      };
+        const apiPokes = state.allPokemons?.filter(
+          (poke) => typeof poke.id === "number"
+        );
+        return {
+          ...state,
+          pokemons: apiPokes,
+        };
+      }
+      break;
 
     case "CLEAR_HOME":
       return {
@@ -186,6 +191,7 @@ const rootReducer = (state = initialState, action) => {
         pokemons: state.allPokemons,
         pokeFilters: [],
       };
+
     case "EMPTY":
       return {
         ...state,
@@ -194,7 +200,7 @@ const rootReducer = (state = initialState, action) => {
         pokeDetail: {},
         error: false,
       };
-      
+
     default:
       return { ...state };
   }

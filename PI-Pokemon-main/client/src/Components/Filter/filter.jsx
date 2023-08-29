@@ -17,8 +17,11 @@ function Filter({ setCurrentPage }) {
   };
 
   const handleType = (event) => {
-    dispatch(filterByType(event.target.value));
+    const selectedType = event.target.value;
+    dispatch(filterByType(selectedType));
+    setCurrentPage(0);
   };
+
   const handleName = (event) => {
     dispatch(orderByName(event.target.value));
     setCurrentPage(0);
