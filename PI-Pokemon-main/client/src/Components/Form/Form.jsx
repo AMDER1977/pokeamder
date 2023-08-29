@@ -37,7 +37,7 @@ const CreatePokemon = () => {
 
   const handleChange = (e) => {
     setInput({
-      ...input,
+      ...input, //actualiza estado input
       [e.target.name]: e.target.value,
     });
     setError(validate({ ...input, [e.target.name]: e.target.value }, pokemon));
@@ -45,6 +45,7 @@ const CreatePokemon = () => {
 
   const handleCheck = (e) => {
     if (e.target.checked) {
+      //maneja seleccion y deseleccion de tipos
       setInput({
         ...input,
         types: [...input.types, e.target.value],
@@ -70,6 +71,7 @@ const CreatePokemon = () => {
   };
 
   const handleSubmit = (e) => {
+    //maneja envio del form
     e.preventDefault();
     dispatch(
       createPokemon({

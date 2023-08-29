@@ -1,5 +1,6 @@
 import axios from "axios";
 
+//obtener todos los pokemones del servidor, llama a la api y almacena en el edo globlal
 export const getPokemon = () => {
   return async function (dispatch) {
     const pokemon = await axios.get("http://localhost:3001/pokemons");
@@ -10,6 +11,7 @@ export const getPokemon = () => {
   };
 };
 
+//detalles de pokemons segun el id
 export function getPokemonDetail(id) {
   return async function (dispatch) {
     try {
@@ -26,6 +28,7 @@ export function getPokemonDetail(id) {
   };
 }
 
+//obtener por nombre
 export const getByName = (name) => {
   return async function (dispatch) {
     try {
@@ -42,6 +45,7 @@ export const getByName = (name) => {
   };
 };
 
+//crea nuevo POST, actualiza el edo global
 export const createPokemon = (pokemon) => {
   return async function (dispatch) {
     let payload = await axios.post("http://localhost:3001/pokemons", pokemon);
@@ -53,13 +57,14 @@ export const createPokemon = (pokemon) => {
   };
 };
 
+//obtiene los tipos disponibles
 export const getTypes = () => {
-  return async (dispatch) => {
+  return async function (dispatch) {
     try {
-      const types = await axios.get("http://localhost:3001/types");
+      const pokeTypes = await axios.get("http://localhost:3001/types");
       return dispatch({
         type: "GET_TYPES",
-        payload: types.data,
+        payload: pokeTypes.data,
       });
     } catch (e) {
       console.error(e);
@@ -92,6 +97,7 @@ export const filterByType = (payload) => {
     payload,
   };
 };
+//borra detalles del edo globlal
 export const clearDetail = () => {
   return {
     type: "CLEAR_DETAIL",
@@ -102,6 +108,7 @@ export const clearHome = () => {
     type: "CLEAR_HOME",
   };
 };
+//se usa para reestablecer el edo globlal cuando es necesario
 export const empty = () => {
   return {
     type: "EMPTY",

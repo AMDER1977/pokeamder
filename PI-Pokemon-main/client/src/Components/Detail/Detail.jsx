@@ -11,7 +11,7 @@ const Detail = (props) => {
   useEffect(() => {
     dispatch(getPokemonDetail(props.match.params.id));
   }, [dispatch, props.match.params.id]);
-
+  //al montar con useEffect se obtienen los detalles desde el edo
   const pokemon = useSelector((state) => state.pokeDetail);
 
   const handleClick = (e) => {
@@ -27,6 +27,7 @@ const Detail = (props) => {
       </Link>
       {pokemon.length ? (
         <div className="detail">
+          {/*mostrar detalles*/}
           <div>
             <h1>Name: {pokemon[0].name.toUpperCase()}</h1>
             <img
@@ -38,6 +39,7 @@ const Detail = (props) => {
             <h2>{pokemon[0].types.join(" - ").toUpperCase()}</h2>
           </div>
           <div className="stats">
+            {/*estadisticas*/}
             <h3>ID: {pokemon[0].id}</h3>
             <h2>Hp: {pokemon[0].hp}</h2>
             <h2>attack: {pokemon[0].attack}</h2>

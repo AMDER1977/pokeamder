@@ -8,7 +8,7 @@
 }
 .detail {
   border-radius: 5rem;
-  border: 15px solid blue;
+  border: 10px solid blue;
   margin-top: 12rem;
   margin-left: 30rem;
   margin-right: 30rem;
@@ -29,12 +29,12 @@
 }
 .button {
   margin-top: 2rem;
-  background-color: yellow;
-  border: 2px solid rgb(52, 101, 175);
+  background-color: red;
+  border: 2px solid black;
   border-radius: 1rem;
-  color: blue;
+  color: black;
   height: 3rem;
   width: 7rem;
   cursor: pointer;
-  font-size: medium;
+  font-size: large;
 }

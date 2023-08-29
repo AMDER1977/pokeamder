@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
 
-  width: 500px;
+  width: 800px;
 }
 .form {
   display: flex;
@@ -14,12 +14,12 @@
   height: fit-content;
   background-color: yellow;
   border: 10px solid blue;
-  border-radius: 15px;
-  padding: 10px;
+  border-radius: 20px;
+  padding: 20px;
 }
 .inputsAndTypes {
   display: flex;
-  gap: 1rem;
+  gap: 2.5rem;
 }
 .containerForm {
   display: flex;
@@ -27,7 +27,7 @@
   justify-content: center;
   align-content: center;
   align-items: center;
-  gap: 80px;
+  gap: 90px;
 }
 .inputs {
   display: flex;
@@ -52,12 +52,13 @@
 }
 .homeButton {
   margin-top: 15px;
-  background-color: yellow;
+  background-color: red;
   cursor: pointer;
-  color: blue;
-  border-radius: 8px;
-  border: 2px solid rgb(52, 101, 175);
-  height: 30px;
+  color: black;
+  border-radius: 15px;
+  border: 2px solid black;
+  height: 50px;
+  font-size: medium;
 }
 .homeButton:disabled {
   background-color: gray;
