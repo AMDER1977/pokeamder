@@ -46,29 +46,15 @@ const rootReducer = (state = initialState, action) => {
 
       const typeSelected = state.allPokemons?.filter((el) => {
         if (!el.createdInDb) {
-          if (
-            el.types[0] === action.payload ||
-            el.types[1] === action.payload
-          ) {
-            return true;
-          } else return false;
+          return el.types.includes(action.payload);
         } else {
-          let acum = el.pokeTypes?.filter((t) => t.name === action.payload);
-          if (acum.length > 0) {
-            return true;
-          } else {
-            return false;
-          }
+          return el.pokeTypes?.some((t) => t.name === action.payload);
         }
       });
 
-      const results = typeSelected.filter((pk) =>
-        state.allPokemons.includes(pk)
-      );
-
       return {
         ...state,
-        pokemons: results,
+        pokemons: typeSelected,
       };
 
     case "ORDER_BY_NAME":
