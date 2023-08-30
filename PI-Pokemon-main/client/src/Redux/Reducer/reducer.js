@@ -58,48 +58,25 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case "ORDER_BY_NAME":
-      if (action.payload === "asc") {
-        let poke = state.pokemons?.slice();
-        let ords = poke.sort(function (a, b) {
-          if (a.name > b.name) {
-            return 1;
-          }
-          if (b.name > a.name) {
-            return -1;
-          }
-          return 0;
-        });
+      const isDescending = action.payload === "des"; // se usa para ordenar de forma descendente
+      const pokeCopy = [...state.pokemons]; // se clona antes el arreglo original
 
-        if (state.pokeFilter.length > 0) {
-          return { ...state, pokeFilter: ords };
-        }
-        return {
-          ...state,
-          pokemons: ords,
-        };
+      pokeCopy.sort((a, b) => {
+        //se usa el metodo sort para modificarlo
+        return isDescending
+          ? b.name.localeCompare(a.name) // metodo para comparar las cadenas de nombres y saber si va antes o despues
+          : a.name.localeCompare(b.name);
+      });
+
+      if (state.pokeFilter.length > 0) {
+        return { ...state, pokeFilter: pokeCopy };
       }
 
-      if (action.payload === "des") {
-        let poke = state.pokemons?.slice();
-        let ords = poke.sort(function (a, b) {
-          if (b.name > a.name) {
-            return 1;
-          }
-          if (a.name > b.name) {
-            return -1;
-          }
-          return 0;
-        });
+      return {
+        ...state,
+        pokemons: pokeCopy,
+      };
 
-        if (state.pokeFilter.length > 0) {
-          return { ...state, pokeFilter: ords };
-        }
-        return {
-          ...state,
-          pokemons: ords,
-        };
-      }
-      break;
     case "ORDER_BY_ATTACK":
       if (action.payload === "asc") {
         let poke = state.pokemons?.slice();

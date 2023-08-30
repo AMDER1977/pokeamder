@@ -7,6 +7,7 @@ function SearchBar({ setCurrentPage }) {
   const dispatch = useDispatch();
 
   const [input, setInput] = useState("");
+  // eslint-disable-next-line
   const pokemons = useSelector((state) => state.pokemons);
 
   let handlerChange = (event) => {

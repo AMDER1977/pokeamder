@@ -11,6 +11,7 @@ import "./Filter.css";
 
 function Filter({ setCurrentPage }) {
   const dispatch = useDispatch();
+  // eslint-disable-next-line
   const types = useSelector((state) => state.types);
 
   const clearFilters = () => {
@@ -30,6 +31,7 @@ function Filter({ setCurrentPage }) {
     dispatch(orderByName(event.target.value));
     setCurrentPage(0);
   };
+
   const handleAttack = (event) => {
     dispatch(orderByAttack(event.target.value));
     setCurrentPage(0);
@@ -48,10 +50,10 @@ function Filter({ setCurrentPage }) {
       {/*Filtro por ataque*/}
       <select onChange={handleAttack} className="filterButton">
         <option disabled defaultValue="">
-          Order Pokemons
+          Order Pokemons Attack
         </option>
-        <option value="asc">Ascendente</option>
-        <option value="des">Descendente</option>
+        <option value="asc">Ascendent-Attack</option>
+        <option value="des">Descendent-Attack</option>
       </select>
 
       {/*Filtro por nombre*/}
