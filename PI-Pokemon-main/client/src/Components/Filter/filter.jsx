@@ -14,12 +14,12 @@ function Filter({ setCurrentPage }) {
   const types = useSelector((state) => state.types);
 
   const clearFilters = () => {
-    //*borra todos los filtros
+    //*borra todos los filtros y reinicia la pagina
     dispatch(clearHome());
     setCurrentPage(0);
   };
 
-  //*manejador de cambios en las opciones de filtrado
+  //*maneja cambios en las opciones de filtrado
   const handleType = (event) => {
     const selectedType = event.target.value;
     dispatch(filterByType(selectedType));
@@ -44,6 +44,7 @@ function Filter({ setCurrentPage }) {
       <button onClick={clearFilters} className="filterButton">
         Clear Filters
       </button>
+
       {/*Filtro por ataque*/}
       <select onChange={handleAttack} className="filterButton">
         <option disabled defaultValue="">
@@ -52,6 +53,7 @@ function Filter({ setCurrentPage }) {
         <option value="asc">Ascendente</option>
         <option value="des">Descendente</option>
       </select>
+
       {/*Filtro por nombre*/}
       <select onChange={handleName} className="filterButton">
         <option disabled defaultValue="">
@@ -66,6 +68,7 @@ function Filter({ setCurrentPage }) {
         <option value="api">Existing Pokemons</option>
         <option value="created">Created Pokemons</option>
       </select>
+
       {/*Filtro por tipo*/}
       <select onChange={handleType} className="filterButton">
         <option value="all">Select one Poke-Type </option>

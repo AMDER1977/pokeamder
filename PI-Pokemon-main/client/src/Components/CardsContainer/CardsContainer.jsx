@@ -10,7 +10,7 @@ import "./CardsContainer.css";
 
 function CardsContainer() {
   // Se obtienen los datos del estado "pokemons" desde Redux
-  const pokemons = useSelector((state) => state.pokemons);
+  const pokemons = useSelector((state) => state.pokemons); //trae los datos del pokemon desde el edo globlal redux
   const dispatch = useDispatch();
   useEffect(() => {
     // disparar la accion para obtener pokemons al montar el componente
@@ -26,7 +26,7 @@ function CardsContainer() {
     (currentPage + 1) * cardsPerPage
   );
   const handleNextClick = () => {
-    //boton sig
+    //boton sig cambio de pag
     if (currentPage < pageCount - 1) {
       setCurrentPage(currentPage + 1);
     }

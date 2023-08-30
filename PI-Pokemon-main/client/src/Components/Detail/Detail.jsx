@@ -9,16 +9,17 @@ import "./Detail.css";
 const Detail = (props) => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getPokemonDetail(props.match.params.id));
+    dispatch(getPokemonDetail(props.match.params.id)); //se llama a la accion con el id del pokemon obtenido
   }, [dispatch, props.match.params.id]);
-  //al montar con useEffect se obtienen los detalles desde el edo
-  const pokemon = useSelector((state) => state.pokeDetail);
+  //al montar con useEffect se cargan los detalles desde el edo
+  const pokemon = useSelector((state) => state.pokeDetail); //con el useSelector se obtiene el objeto de detalle desde el edo
 
   const handleClick = (e) => {
-    dispatch(clearDetail());
+    dispatch(clearDetail()); //para limpiar lod detalles uso clearDetail
   };
   //console.log(pokemon);
   return (
+    //se renderizan los detalles recibidos
     <div className="fondo">
       <Link to={"/home"}>
         <button className="button" onClick={(e) => handleClick(e)}>

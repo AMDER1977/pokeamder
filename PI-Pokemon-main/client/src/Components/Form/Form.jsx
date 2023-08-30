@@ -37,7 +37,7 @@ const CreatePokemon = () => {
 
   const handleChange = (e) => {
     setInput({
-      ...input, //actualiza estado input
+      ...input, //actualiza estado input(cambios en el formulario)
       [e.target.name]: e.target.value,
     });
     setError(validate({ ...input, [e.target.name]: e.target.value }, pokemon));
@@ -45,7 +45,7 @@ const CreatePokemon = () => {
 
   const handleCheck = (e) => {
     if (e.target.checked) {
-      //maneja seleccion y deseleccion de tipos
+      //maneja la seleccion y deseleccion de tipos
       setInput({
         ...input,
         types: [...input.types, e.target.value],
@@ -71,7 +71,7 @@ const CreatePokemon = () => {
   };
 
   const handleSubmit = (e) => {
-    //maneja envio del form
+    //maneja envio del formulario, despacha la accion
     e.preventDefault();
     dispatch(
       createPokemon({
@@ -102,15 +102,15 @@ const CreatePokemon = () => {
       types: [],
     });
     dispatch(empty());
-    history.push("/home");
+    history.push("/home"); //aca se usa el useHistory para guardar el registro de la ruta
   };
 
   useEffect(() => {
-    dispatch(getTypes());
+    dispatch(getTypes()); //aqui obtiene los tipos de pokemon al cargar el componente
   }, [dispatch]);
 
-  //console.log(input.types);
   return (
+    //renderizado del form
     <div className="containerForm">
       <Link to={"/home"}>
         <button className="homeButton">Back Home</button>
@@ -246,7 +246,7 @@ const CreatePokemon = () => {
             <div>
               <button
                 className="homeButton"
-                type="submit"
+                type="submit" //si hay errores en algun campo se desactiva el boton de envio
                 disabled={
                   error.name ||
                   error.hp ||
