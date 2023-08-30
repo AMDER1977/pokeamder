@@ -120,6 +120,7 @@ const rootReducer = (state = initialState, action) => {
         };
       }
       break;
+
     case "FILTER_BY_CREATE":
       if (action.payload === "all") {
         return {
