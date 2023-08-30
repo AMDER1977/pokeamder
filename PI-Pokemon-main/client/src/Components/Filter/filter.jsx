@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   filterByCreate,
@@ -11,7 +11,7 @@ import "./Filter.css";
 
 function Filter({ setCurrentPage }) {
   const dispatch = useDispatch();
-  const pokemons = useSelector((state) => state.pokemons);
+  const types = useSelector((state) => state.types);
 
   const clearFilters = () => {
     //*borra todos los filtros

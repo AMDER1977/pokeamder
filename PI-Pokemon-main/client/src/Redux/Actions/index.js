@@ -11,6 +11,21 @@ export const getPokemon = () => {
   };
 };
 
+//obtiene los tipos disponibles
+export const getTypes = () => {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get("http://localhost:3001/types");
+      return dispatch({
+        type: "GET_TYPES",
+        payload: response.data,
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+};
+
 //detalles de pokemons segun el id
 export function getPokemonDetail(id) {
   return async function (dispatch) {
@@ -57,20 +72,6 @@ export const createPokemon = (pokemon) => {
   };
 };
 
-//obtiene los tipos disponibles
-export const getTypes = () => {
-  return async function (dispatch) {
-    try {
-      const pokeTypes = await axios.get("http://localhost:3001/types");
-      return dispatch({
-        type: "GET_TYPES",
-        payload: pokeTypes.data,
-      });
-    } catch (e) {
-      console.error(e);
-    }
-  };
-};
 export const filterByCreate = (payload) => {
   return {
     type: "FILTER_BY_CREATE",
@@ -91,12 +92,14 @@ export const orderByAttack = (payload) => {
     payload,
   };
 };
+
 export const filterByType = (payload) => {
   return {
     type: "FILTER_BY_TYPE",
-    payload,
+    payload: payload,
   };
 };
+
 //borra detalles del edo globlal
 export const clearDetail = () => {
   return {

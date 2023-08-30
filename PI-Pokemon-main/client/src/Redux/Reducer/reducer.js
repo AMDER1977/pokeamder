@@ -1,4 +1,4 @@
-const initialState = {
+let initialState = {
   allPokemons: [],
   pokemons: [],
   pokeFilter: [],
@@ -7,7 +7,7 @@ const initialState = {
   error: false,
 };
 
-//func reductora toma edo act y una accionl y devuelve nuevo edo
+//func reductora toma edo act y una accion y devuelve nuevo edo
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case "GET_POKEMON":
