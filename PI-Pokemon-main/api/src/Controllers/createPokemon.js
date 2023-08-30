@@ -1,8 +1,9 @@
 const { Pokemon, Type } = require("../db");
 
 const newPokemon = async (params) => {
-  //requiere por params
+  //requiere por params el objeto
   const createdPokemon = await Pokemon.create({
+    // se crea un nuevo registro  en la DB
     name: params.name,
     hp: params.hp,
     attack: params.attack,
@@ -11,16 +12,11 @@ const newPokemon = async (params) => {
     height: params.height,
     weight: params.weight,
     img: params.img
-      ? params.img
-      : "https://images3.alphacoders.com/677/677583.png",
-    // region:params.region,
+      ? params.img // si tiene imagen se utiliza
+      : "https://images3.alphacoders.com/677/677583.png", // si no imagen subida por defecto
   });
 
-  // const typesDb = await Type.findAll({
-  //   where: {name: params.types}
-  // })
-
-  createdPokemon.addType(params.types);
+  createdPokemon.addType(params.types); // se le agrega uno o varios tipos al pokemon creado
 };
 
 module.exports = { newPokemon };

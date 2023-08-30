@@ -8,19 +8,20 @@ router.get("/", async (req, res) => {
     const { name } = req.query;
     const pokemonsList = await allPokemon();
     if (name) {
+      // cuando se requiere por nombre
       const pokeSelect = await pokemonsList.filter(
         (poke) => poke.name === name.toLowerCase()
       );
       if (pokeSelect.length > 0) {
         res.status(200).json(pokeSelect);
       } else {
-        res.status(404).send("Not found");
+        res.status(404).send("Pokemon By Name Not found");
       }
     } else {
       res.json(pokemonsList);
     }
   } catch (error) {
-    res.status(400).json({ error: "error al traer los pokemones" });
+    res.status(400).json({ error: "Error al traer los pokemons" });
   }
 });
 router.get("/:id", async (req, res) => {
@@ -42,22 +43,6 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// router.get("/name?=", async(req,res)=>{
-//     try {
-//       const { name } = req.query
-//       const pokemonsList = await allPokemon();
-//       if(name){
-//          const pokeSelect = await pokemonsList.filter((poke)=> poke.name === name.toLowerCase() )
-//          if(pokeSelect.length > 0){
-//             res.status(200).json(pokeSelect)
-//          }else{
-//             res.status(404).send("Not found")
-//          }
-//               }
-//     } catch (error) {
-//       res.status(400).send("Error to conect to Controllers")
-//     }
-// })
 /* EJEMPLO CREACION {
      "name": "pruebamon",
       "image": "URL_imagen",
@@ -70,12 +55,13 @@ router.get("/:id", async (req, res) => {
       "types": 3
   }
 */
+
 router.post("/", async (req, res) => {
   try {
     await newPokemon(req.body);
     res.json("You pokemon has be created successfully");
   } catch (e) {
-    res.status(400).send(e.toString()), console.log(e, "Error on Controller");
+    res.status(400).send(e.toString()), console.error(e, "Error on Controller");
   }
 });
 module.exports = router;
