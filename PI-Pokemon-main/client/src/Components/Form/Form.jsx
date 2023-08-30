@@ -246,7 +246,7 @@ const CreatePokemon = () => {
             <div>
               <button
                 className="homeButton"
-                type="submit" //si hay errores en algun campo se desactiva el boton de envio
+                type="submit"
                 disabled={
                   error.name ||
                   error.hp ||
@@ -256,7 +256,7 @@ const CreatePokemon = () => {
                   error.height ||
                   error.weight ||
                   error.types
-                }
+                } //si hay errores en algun campo se desactiva el boton de envio
               >
                 Create new Pokemon
               </button>
